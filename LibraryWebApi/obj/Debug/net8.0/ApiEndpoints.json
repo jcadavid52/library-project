@@ -2,7 +2,7 @@
   {
     "ContainingType": "LibraryWebApi.Controllers.AccountController",
     "Method": "AddUser",
-    "RelativePath": "api/Account",
+    "RelativePath": "api/Account/AddUser",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -10,6 +10,22 @@
       {
         "Name": "addUserDto",
         "Type": "Application.Layer.DTOs.AddUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApi.Controllers.AccountController",
+    "Method": "Login",
+    "RelativePath": "api/Account/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "Application.Layer.DTOs.LoginDto",
         "IsRequired": true
       }
     ],

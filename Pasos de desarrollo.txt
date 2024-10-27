@@ -1,0 +1,25 @@
+PASOS DE DESARROLLO
+
+1.SOLUCION EN BLANCO
+2.CAPA DE DATOS
+ -Interfaces repositorios
+ -Dbcontext
+ -Repositorios
+ -Modelos
+ -Migraciones
+   ▬ Add-Migration NombreDeTuMigracion -Project NombreDelProyectoDeMigraciones -StartupProject NombreDelProyectoDeInicio -OutputDir "CarpetaDeDestinoDeMigraciones"
+ PAQUETES
+ EfCore
+ Efcore sql server
+ Efcore Tools(quitarle el all en las props)
+ identity
+
+3.CAPA PRESENTACIÓN
+ -Middlewares
+ -conexion bd (no es de la capa exactamente ) 
+ -configuracion en program
+
+4.CAPA DE APLICACIÓN
+ -Dtos
+ -interfaces services
+ 

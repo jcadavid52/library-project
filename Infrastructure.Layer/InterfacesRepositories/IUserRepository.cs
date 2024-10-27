@@ -9,6 +9,7 @@ namespace Infrastructure.Layer.Interfaces
 {
     public interface IUserRepository
     {
+        Task<ResponseLogin> Login(string user,string password);
         Task AddUser(User user,string password);
     }
 }

@@ -10,5 +10,7 @@ namespace Application.Layer.InterfacesServices
     public interface IUserService
     {
         Task AddUser(AddUserDto addUserDto);
+        Task<ResponseLoginDto> Login(LoginDto loginDto);
+        string GenerateToken(string username, string rol);
     }
 }

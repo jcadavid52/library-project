@@ -15,7 +15,7 @@ namespace LibraryWebApi.Controllers
         {
             _userService = userService;
         }
-        [HttpPost]
+        [HttpPost("AddUser")]
         public async Task<IActionResult> AddUser([FromBody] AddUserDto addUserDto)
         {
             if (!ModelState.IsValid)
@@ -26,6 +26,26 @@ namespace LibraryWebApi.Controllers
 
             return Ok(new {message = "Registrado exitosamente",user=addUserDto });
         }
-    
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+
+            }
+
+            var resultLogin = await _userService.Login(loginDto);
+
+            if(resultLogin == null)
+            {
+                return NotFound(new {message = "Usuario o clave inválida"});
+            }
+
+            return Ok(resultLogin);
+        }
+
+
     }
 }
