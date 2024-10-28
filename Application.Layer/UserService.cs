@@ -44,28 +44,47 @@ namespace Application.Layer
 
         public string GenerateToken(string username, string rol)
         {
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.Name,username),
-                new Claim(ClaimTypes.Role,rol)
-            }
-        ;
-            var handleToken = new JwtSecurityTokenHandler();
 
+            //var manejadoToken = new JwtSecurityTokenHandler();
+             //var key = Encoding.ASCII.GetBytes(_config["ApiSettings:SecretKey"]);
+            //var tokenDescriptor = new SecurityTokenDescriptor
+            //{
+            //    Subject = new ClaimsIdentity(new Claim[]
+            //    {
+            //        new Claim(ClaimTypes.Name, username.ToString()),
+            //        new Claim(ClaimTypes.Role, rol)
+            //    }),
+            //    Expires = DateTime.UtcNow.AddMinutes(1),
+            //    SigningCredentials = new(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            //};
+
+            //var token = manejadoToken.CreateToken(tokenDescriptor);
+
+            //return manejadoToken.WriteToken(token);
+
+            var claims = new[]
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, username),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.Role, rol),
+            new Claim(ClaimTypes.Name, username.ToString())
+        };
+
+            // Configuración de la clave secreta y las credenciales de firma
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["ApiSettings:SecretKey"]));
-            //var key = Encoding.ASCII.GetBytes()
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            // Creación del token con duración de 1 minuto
             var token = new JwtSecurityToken(
-
-                //issuer: _config["Jwt:Issuer"],
-                //audience: _config["Jwt:Audience"],
+                //issuer: "tuDominio.com",
+                //audience: "tuDominio.com",
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddMinutes(1),  // Token válido por 1 minuto
                 signingCredentials: creds
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+
         }
 
         public async Task<ResponseLoginDto> Login(LoginDto loginDto)

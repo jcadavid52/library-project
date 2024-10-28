@@ -13,11 +13,11 @@ namespace Infrastructure.Layer.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<User> _userManager;
         private readonly LibraryDBContext _libraryDbContext;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserRepository(UserManager<IdentityUser> userManager,
+        public UserRepository(UserManager<User> userManager,
             LibraryDBContext libraryDbContext,
             RoleManager<IdentityRole> roleManager)
         {

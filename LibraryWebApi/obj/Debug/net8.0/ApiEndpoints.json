@@ -30,5 +30,25 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApi.Controllers.BookController",
+    "Method": "AddBook",
+    "RelativePath": "api/Book/AddBook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApi.Controllers.BookController",
+    "Method": "GetAllBooks",
+    "RelativePath": "api/Book/GetAllBooks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]
