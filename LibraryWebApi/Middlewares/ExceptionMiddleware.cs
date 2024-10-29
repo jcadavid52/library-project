@@ -29,6 +29,10 @@ namespace LibraryWebApi.Middlewares
                 // Captura las excepciones de validación y devuelve un 400 Bad Request
                 await HandleExceptionAsync(httpContext, ex, 400);
             }
+            catch(KeyNotFoundException ex)
+            {
+                await HandleExceptionAsync(httpContext, ex, 404);
+            }
             catch (Exception ex)
             {
                 // Captura cualquier otro tipo de excepción y devuelve un 500 Internal Server Error

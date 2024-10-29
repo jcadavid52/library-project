@@ -33,7 +33,9 @@ namespace Infrastructure.Layer.Repositories
                 await SaveChanges();
             }
 
-            
+            throw new KeyNotFoundException($"No se encontró un registro con el ID: {id}");
+
+
         }
 
         public async Task<IEnumerable<Book>> GetAllBooks()
