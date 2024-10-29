@@ -39,5 +39,19 @@ namespace LibraryWebApi.Controllers
 
             return Ok(new { message = "Registrado exitosamente", book = book });
         }
+
+        [HttpDelete("DeleteBook")]
+        [Authorize(Roles = "Administrador")]
+        public async Task<IActionResult> DeleteBook(int id)
+        {
+            if(id == null || id < 1)
+            {
+                return NotFound();
+            }
+            await _bookService.DeleteBook(id);
+
+            return Ok("Eliminado con exito");
+        }
+
     }
 }

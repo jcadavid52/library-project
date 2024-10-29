@@ -49,6 +49,22 @@
   },
   {
     "ContainingType": "LibraryWebApi.Controllers.BookController",
+    "Method": "DeleteBook",
+    "RelativePath": "api/Book/DeleteBook",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApi.Controllers.BookController",
     "Method": "GetAllBooks",
     "RelativePath": "api/Book/GetAllBooks",
     "HttpMethod": "GET",

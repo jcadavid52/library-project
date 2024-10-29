@@ -10,7 +10,9 @@ namespace Infrastructure.Layer.InterfacesRepositories
     public interface IBookRepository
     {
         Task<IEnumerable<Book>> GetAllBooks();
+        Task<Book> GetBook(int id);
         Task AddBook(Book book);
+        Task DeleteBook(int id);
         Task SaveChanges();
     }
 }

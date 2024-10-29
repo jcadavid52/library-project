@@ -37,6 +37,11 @@ namespace Application.Layer
 
         }
 
+        public async Task DeleteBook(int id)
+        {
+            await _bookRepository.DeleteBook(id);
+        }
+
         public async Task<IEnumerable<BookDto>> GetAllBooks()
         {
             var books = await _bookRepository.GetAllBooks();

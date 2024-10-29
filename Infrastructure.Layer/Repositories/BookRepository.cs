@@ -19,13 +19,31 @@ namespace Infrastructure.Layer.Repositories
         public async Task AddBook(Book book)
         {
             await _libraryDbContext.Books.AddAsync(book);
-            await _libraryDbContext.SaveChangesAsync();
+            await SaveChanges();
 
+        }
+
+        public async Task DeleteBook(int id)
+        {
+            var book = await GetBook(id);
+
+            if(book != null)
+            {
+                _libraryDbContext.Remove(book);
+                await SaveChanges();
+            }
+
+            
         }
 
         public async Task<IEnumerable<Book>> GetAllBooks()
         {
             return await _libraryDbContext.Books.Include("Author").Include("Category").ToListAsync();
+        }
+
+        public async Task<Book> GetBook(int id)
+        {
+            return await _libraryDbContext.Books.FirstOrDefaultAsync(b => b.Id == id);
         }
 
         public async Task SaveChanges()
