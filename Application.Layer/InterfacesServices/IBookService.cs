@@ -10,6 +10,7 @@ namespace Application.Layer.InterfacesServices
     public interface IBookService
     {
         Task AddBook(AddBookDto addUserDto);
+        Task<IEnumerable<BookDto>> GetAllBooks();
         
     }
 }

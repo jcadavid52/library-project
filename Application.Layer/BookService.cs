@@ -36,5 +36,35 @@ namespace Application.Layer
             await _bookRepository.AddBook(book);
 
         }
+
+        public async Task<IEnumerable<BookDto>> GetAllBooks()
+        {
+            var books = await _bookRepository.GetAllBooks();
+
+            var listBooksDtos = new List<BookDto>();
+
+            foreach (var book in books)
+            {
+
+                var bookDto = new BookDto
+                {
+                    Id = book.Id,
+                    Title = book.Title,
+                    PageNumber = book.PageNumber,
+                    Description = book.Description,
+                    DatePublication = book.DatePublication,
+                    DateCreation = book.DateCreation,
+                    Author = book.Author.Name,
+                    Genero = book.Category.Name
+
+                };
+
+                listBooksDtos.Add(bookDto);
+               
+            }
+
+            return listBooksDtos;
+            
+        }
     }
 }

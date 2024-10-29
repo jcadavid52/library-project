@@ -13,3 +13,4 @@ C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\Lyb
 C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\Application.Layer\obj\Debug\net8.0\refint\Application.Layer.dll
 C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\Application.Layer\obj\Debug\net8.0\Application.Layer.pdb
 C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\Application.Layer\obj\Debug\net8.0\ref\Application.Layer.dll
+C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\Application.Layer\obj\Debug\net8.0\Application.Layer.sourcelink.json

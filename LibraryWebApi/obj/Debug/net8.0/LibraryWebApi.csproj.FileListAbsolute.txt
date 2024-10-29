@@ -150,3 +150,4 @@ C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\Lyb
 C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\LibraryWebApi\bin\Debug\net8.0\Application.Layer.dll
 C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\LibraryWebApi\bin\Debug\net8.0\Application.Layer.pdb
 C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\LibraryWebApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\LibraryWebApi\obj\Debug\net8.0\LibraryWebApi.sourcelink.json

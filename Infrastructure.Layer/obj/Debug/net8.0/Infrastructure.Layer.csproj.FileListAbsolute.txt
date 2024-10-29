@@ -12,3 +12,4 @@ C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\Lyb
 C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\Infrastructure.Layer\obj\Debug\net8.0\Infrastructure.Layer.pdb
 C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\Infrastructure.Layer\obj\Debug\net8.0\Infrastructure.Layer.genruntimeconfig.cache
 C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\Infrastructure.Layer\obj\Debug\net8.0\ref\Infrastructure.Layer.dll
+C:\Users\Camilo Cadavid\Documents\Projects\Personal projects\Library Project\LybrarySolution\Infrastructure.Layer\obj\Debug\net8.0\Infrastructure.Layer.sourcelink.json

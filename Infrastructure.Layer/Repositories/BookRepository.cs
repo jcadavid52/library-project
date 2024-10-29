@@ -25,7 +25,7 @@ namespace Infrastructure.Layer.Repositories
 
         public async Task<IEnumerable<Book>> GetAllBooks()
         {
-            return await _libraryDbContext.Books.ToListAsync();
+            return await _libraryDbContext.Books.Include("Author").Include("Category").ToListAsync();
         }
 
         public async Task SaveChanges()

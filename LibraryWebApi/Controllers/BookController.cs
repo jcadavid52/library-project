@@ -22,7 +22,7 @@ namespace LibraryWebApi.Controllers
         [Authorize(Roles = "Usuario,Administrador")]
         public async Task<IActionResult> GetAllBooks()
         {
-            return Ok("Libros");
+            return Ok(await _bookService.GetAllBooks());
         }
 
         
