@@ -2,6 +2,7 @@ using Application.Layer;
 using Application.Layer.InterfacesServices;
 using Infrastructure.Layer;
 using Infrastructure.Layer.Interfaces;
+using Infrastructure.Layer.InterfacesRepositories;
 using Infrastructure.Layer.Models;
 using Infrastructure.Layer.Repositories;
 using LibraryWebApi.Middlewares;
@@ -23,6 +24,9 @@ builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<Libr
 //dependencias
 builder.Services.AddScoped<IUserRepository,UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 var key = builder.Configuration.GetValue<string>("ApiSettings:SecretKey");
 

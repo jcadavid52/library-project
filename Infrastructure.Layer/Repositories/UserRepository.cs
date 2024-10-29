@@ -51,7 +51,7 @@ namespace Infrastructure.Layer.Repositories
                 throw new ValidationException(messageError);
             }
 
-            await _userManager.AddToRoleAsync(user, "Usuario");
+            await _userManager.AddToRoleAsync(user, "Administrador");
         }
 
         public async Task<ResponseLogin> Login(string user, string password)

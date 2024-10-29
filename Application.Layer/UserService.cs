@@ -79,7 +79,7 @@ namespace Application.Layer
                 //issuer: "tuDominio.com",
                 //audience: "tuDominio.com",
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(1),  // Token válido por 1 minuto
+                expires: DateTime.Now.AddMinutes(10),  // Token válido por 1 minuto
                 signingCredentials: creds
             );
 

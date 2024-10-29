@@ -38,7 +38,13 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "book",
+        "Type": "Application.Layer.DTOs.AddBookDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
