@@ -12,6 +12,7 @@ namespace Infrastructure.Layer.InterfacesRepositories
         Task<IEnumerable<Book>> GetAllBooks();
         Task<Book> GetBook(int id);
         Task AddBook(Book book);
+        Task UpdateBook();
         Task DeleteBook(int id);
         Task<Book> GetBookByTitle(string title);
         Task SaveChanges();

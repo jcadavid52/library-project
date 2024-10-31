@@ -27,7 +27,7 @@ namespace Application.Layer
                 throw new ValidationException("La página del libro no puede ser menor a 49 páginas según la UNESCO");
             }
 
-            var resultBook = GetBookByTitle(addUserDto.Title);
+            var resultBook = await _bookRepository.GetBookByTitle(addUserDto.Title);
 
             if(resultBook != null)
             {
@@ -162,6 +162,26 @@ namespace Application.Layer
             };
 
             return bookDto;
+        }
+
+        public async Task UpdateBook(UpdateBookDto bookDto, int id)
+        {
+            var book = await _bookRepository.GetBook(id);
+
+            if (book == null)
+            {
+                throw new KeyNotFoundException($"No se encontró un libro con el ID '{id}'");
+            }
+
+            book.Title = bookDto.Title;
+            book.Description = bookDto.Description;
+            book.Id = id;
+            book.IdAuthor = bookDto.IdAuthor;
+            book.IdCategory = bookDto.IdCategory;
+            book.PageNumber = bookDto.PageNumber;
+            book.DatePublication = bookDto.DatePublication;
+
+            await _bookRepository.UpdateBook();
         }
     }
 }

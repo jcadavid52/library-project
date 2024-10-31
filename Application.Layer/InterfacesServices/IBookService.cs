@@ -10,6 +10,7 @@ namespace Application.Layer.InterfacesServices
     public interface IBookService
     {
         Task AddBook(AddBookDto addUserDto);
+        Task UpdateBook(UpdateBookDto bookDto,int id);
         Task DeleteBook(int id);
         Task<BookDto> GetBook(int id);
         Task<BookDto> GetBookByTitle(string title);

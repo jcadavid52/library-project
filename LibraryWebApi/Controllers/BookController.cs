@@ -1,6 +1,7 @@
 ﻿
 using Application.Layer.DTOs;
 using Application.Layer.InterfacesServices;
+using Infrastructure.Layer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -84,6 +85,25 @@ namespace LibraryWebApi.Controllers
             }
 
             return Ok(new { Book = book });
+        }
+
+        [HttpPut("UpdateBook")]
+        [Authorize(Roles = "Administrador")]
+        public async Task<IActionResult> UpdateBook([FromBody] UpdateBookDto bookDto, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id == null || id < 1 || bookDto == null)
+            {
+                return NotFound();
+            }
+
+            await _bookService.UpdateBook(bookDto, id);
+
+            return Ok(new {Message = "Modificado con éxito",BookUpdated = bookDto});
         }
 
     }

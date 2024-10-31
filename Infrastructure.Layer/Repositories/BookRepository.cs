@@ -57,5 +57,12 @@ namespace Infrastructure.Layer.Repositories
         {
             await _libraryDbContext.SaveChangesAsync();
         }
+
+        public async Task UpdateBook()
+        {
+            
+            await SaveChanges();
+            
+        }
     }
 }
