@@ -4,6 +4,7 @@ using Application.Layer.InterfacesServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace LibraryWebApi.Controllers
 {
@@ -51,6 +52,38 @@ namespace LibraryWebApi.Controllers
             await _bookService.DeleteBook(id);
 
             return Ok("Eliminado con exito");
+        }
+
+        [HttpGet("GetBook")]
+
+        [Authorize(Roles = "Usuario,Administrador")]
+        public async Task<IActionResult> GetBook(int id)
+        {
+            var book = await _bookService.GetBook(id);
+
+            if (id == null || id < 1 || book == null)
+            {
+                return NotFound();
+            }
+
+            
+
+            return Ok(new { Book = book });
+        }
+
+        [HttpGet("GetBookByTitle")]
+
+        [Authorize(Roles = "Usuario,Administrador")]
+        public async Task<IActionResult> GetBookByTitle(string title)
+        {
+            var book = await _bookService.GetBookByTitle(title);
+
+            if (title.IsNullOrEmpty() || book == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new { Book = book });
         }
 
     }

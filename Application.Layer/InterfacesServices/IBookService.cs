@@ -11,6 +11,8 @@ namespace Application.Layer.InterfacesServices
     {
         Task AddBook(AddBookDto addUserDto);
         Task DeleteBook(int id);
+        Task<BookDto> GetBook(int id);
+        Task<BookDto> GetBookByTitle(string title);
         Task<IEnumerable<BookDto>> GetAllBooks();
         
     }

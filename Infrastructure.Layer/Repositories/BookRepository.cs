@@ -45,7 +45,12 @@ namespace Infrastructure.Layer.Repositories
 
         public async Task<Book> GetBook(int id)
         {
-            return await _libraryDbContext.Books.FirstOrDefaultAsync(b => b.Id == id);
+            return await _libraryDbContext.Books.Include("Author").Include("Category").FirstOrDefaultAsync(b => b.Id == id);
+        }
+
+        public async Task<Book> GetBookByTitle(string title)
+        {
+            return await _libraryDbContext.Books.Include("Author").Include("Category").FirstOrDefaultAsync(b => b.Title == title);
         }
 
         public async Task SaveChanges()

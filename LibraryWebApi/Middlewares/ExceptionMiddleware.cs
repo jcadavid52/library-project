@@ -33,6 +33,10 @@ namespace LibraryWebApi.Middlewares
             {
                 await HandleExceptionAsync(httpContext, ex, 404);
             }
+            catch (InvalidOperationException ex)
+            {
+                await HandleExceptionAsync(httpContext, ex, 409);
+            }
             catch (Exception ex)
             {
                 // Captura cualquier otro tipo de excepción y devuelve un 500 Internal Server Error

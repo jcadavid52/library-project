@@ -27,7 +27,6 @@ namespace Application.Layer.DTOs
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public DateTime DatePublication { get; set; }
 
-        [Required(ErrorMessage = "Este campo es obligatorio")]
-        public DateTime DateCreation { get; set; }
+     
     }
 }

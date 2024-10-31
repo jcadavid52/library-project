@@ -13,6 +13,7 @@ namespace Infrastructure.Layer.InterfacesRepositories
         Task<Book> GetBook(int id);
         Task AddBook(Book book);
         Task DeleteBook(int id);
+        Task<Book> GetBookByTitle(string title);
         Task SaveChanges();
     }
 }

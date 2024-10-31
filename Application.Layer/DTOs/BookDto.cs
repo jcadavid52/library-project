@@ -14,8 +14,8 @@ namespace Application.Layer.DTOs
         public string Description { get; set; }
         public DateTime DatePublication { get; set; }
         public DateTime DateCreation { get; set; }
-        public string Author { get; set; }
-        public string Genero { get; set; }
+        public AuthorDto Author { get; set; }
+        public GeneroDto Genero { get; set; }
 
 
     }
