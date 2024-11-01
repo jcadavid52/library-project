@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Layer.InterfacesRepositories
 {
-    public interface IAuthorRepository
+    public interface ICategoryRepository
     {
-        Task AddAuthor(Author author);
-        Task<IEnumerable<Author>> GetAllAuthors();
-        Task<Author> GetAuthorByName(string name);
+        Task<IEnumerable<Category>> GetAllCategories();
+        Task AddCategory(Category category);
+        Task<Category> GetCategoryByName(string name);
         Task SaveChanges();
+
+
     }
 }

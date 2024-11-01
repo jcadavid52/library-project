@@ -23,19 +23,11 @@ namespace Infrastructure.Layer.Repositories
 
         }
 
-        public async Task DeleteBook(int id)
+        public async Task DeleteBook(Book book)
         {
-            var book = await GetBook(id);
-
-            if(book != null)
-            {
-                _libraryDbContext.Remove(book);
-                await SaveChanges();
-            }
-
-            throw new KeyNotFoundException($"No se encontró un registro con el ID: {id}");
-
-
+        
+            _libraryDbContext.Remove(book);
+            await SaveChanges();
         }
 
         public async Task<IEnumerable<Book>> GetAllBooks()

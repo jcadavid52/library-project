@@ -52,7 +52,15 @@ namespace Application.Layer
 
         public async Task DeleteBook(int id)
         {
-            await _bookRepository.DeleteBook(id);
+            var book = await _bookRepository.GetBook(id);
+
+            if (book == null)
+            {
+                throw new KeyNotFoundException($"No se encontró un registro con el ID: {id}");
+            }
+
+           
+            await _bookRepository.DeleteBook(book);
         }
 
         public async Task<IEnumerable<BookDto>> GetAllBooks()

@@ -27,6 +27,11 @@ namespace Infrastructure.Layer.Repositories
             return await _dbContext.Authors.ToListAsync();
         }
 
+        public async Task<Author> GetAuthorByName(string name)
+        {
+            return await _dbContext.Authors.FirstOrDefaultAsync(a => a.Name == name);
+        }
+
         public async Task SaveChanges()
         {
             await _dbContext.SaveChangesAsync();

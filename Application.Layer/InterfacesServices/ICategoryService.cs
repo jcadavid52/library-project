@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Application.Layer.InterfacesServices
 {
-    public interface IAuthorService
+    public interface ICategoryService
     {
-        Task AddAuthor(AddAuthorDto authorDto);
-        Task<IEnumerable<AuthorDto>> GetAllAuthors();
-       
+        Task<IEnumerable<CategoryDto>> GetAllCategories();
+        Task AddCategory(AddCategoryDto categoryDto); 
     }
 }

@@ -19,6 +19,20 @@ namespace Application.Layer
         }
         public async Task AddAuthor(AddAuthorDto authorDto)
         {
+            var authorResult = await _authorRepository.GetAuthorByName(authorDto.Name);
+
+            if (authorResult != null)
+            {
+                throw new InvalidOperationException($"El autor con el nombre {authorDto.Name} ya existe");
+            }
+
+            if (!CalculateAge(authorDto.Birthdate))
+            {
+                throw new InvalidOperationException($"El autor debe ser mayor de 18 años");
+            }
+
+
+
             var author = new Author
             {
                 Name = authorDto.Name,
@@ -49,6 +63,19 @@ namespace Application.Layer
             }
 
             return listAuthorsDtos;
+        }
+
+        static bool CalculateAge(DateTime birthDate)
+        {
+            var yearNow = DateTime.Now.Year;
+            var calculateAgeResult = yearNow - birthDate.Year;
+
+            if(calculateAgeResult < 18)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
