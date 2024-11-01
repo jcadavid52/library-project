@@ -28,6 +28,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookService>();
 
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+
 var key = builder.Configuration.GetValue<string>("ApiSettings:SecretKey");
 
 //autenticacion

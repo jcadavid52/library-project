@@ -24,7 +24,9 @@ namespace LibraryWebApi.Controllers
         [Authorize(Roles = "Usuario,Administrador")]
         public async Task<IActionResult> GetAllBooks()
         {
-            return Ok(await _bookService.GetAllBooks());
+            var books = await _bookService.GetAllBooks();
+
+            return Ok(new {Books = books});
         }
 
         

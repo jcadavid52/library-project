@@ -32,6 +32,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "LibraryWebApi.Controllers.AuthorController",
+    "Method": "GetAllAuthors",
+    "RelativePath": "api/Author/GetAllAuthors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "LibraryWebApi.Controllers.BookController",
     "Method": "AddBook",
     "RelativePath": "api/Book/AddBook",
