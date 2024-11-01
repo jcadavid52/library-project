@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "LibraryWebApi.Controllers.AuthorController",
+    "Method": "AddAuthor",
+    "RelativePath": "api/Author/AddAuthor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addAuthorDto",
+        "Type": "Application.Layer.DTOs.AddAuthorDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApi.Controllers.AuthorController",
     "Method": "GetAllAuthors",
     "RelativePath": "api/Author/GetAllAuthors",
     "HttpMethod": "GET",

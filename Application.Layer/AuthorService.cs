@@ -39,6 +39,7 @@ namespace Application.Layer
             {
                 var authorDto = new AuthorDto
                 {
+                    Id = author.Id,
                     Name = author.Name,
                     Nationality = author.Nationality,
                     Birthdate = author.Birthdate,

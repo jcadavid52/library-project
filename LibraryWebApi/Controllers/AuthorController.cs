@@ -1,4 +1,5 @@
-﻿using Application.Layer.InterfacesServices;
+﻿using Application.Layer.DTOs;
+using Application.Layer.InterfacesServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,5 +25,20 @@ namespace LibraryWebApi.Controllers
 
             return Ok(new { Authors = authors });
         }
+
+        [HttpPost("AddAuthor")]
+        [Authorize(Roles = "Administrador")]
+        public async Task<IActionResult> AddAuthor([FromBody] AddAuthorDto addAuthorDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _authorService.AddAuthor(addAuthorDto);
+
+            return Ok(new { Message = "Author agregado con éxito", Author = addAuthorDto });
+        }
+
     }
 }
