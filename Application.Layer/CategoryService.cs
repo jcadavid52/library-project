@@ -35,9 +35,24 @@ namespace Application.Layer
             await _categoryRepository.AddCategory(category);
         }
 
-        public Task<IEnumerable<CategoryDto>> GetAllCategories()
+        public async Task<IEnumerable<CategoryDto>> GetAllCategories()
         {
-            throw new NotImplementedException();
+            var catogories = await _categoryRepository.GetAllCategories();
+            var catogoriesDto = new List<CategoryDto>();
+
+            foreach (var category in catogories)
+            {
+                var catogorieDto = new CategoryDto
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                };
+
+                catogoriesDto.Add(catogorieDto);
+            }
+
+            return catogoriesDto;
+
         }
     }
 }

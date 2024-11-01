@@ -17,7 +17,15 @@ namespace LibraryWebApi.Controllers
             _categoryService = categoryService;
         }
 
-        //[HttpGet("GetAllCategories")]
+        [HttpGet("GetAllCategories")]
+        [Authorize(Roles = "Usuario,Administrador")]
+        public async Task<IActionResult> GetAllCategories()
+        {
+            var categories = await _categoryService.GetAllCategories();
+            
+            return Ok(new { Categories = categories });
+        }
+
         [HttpPost("AddCategory")]
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> AddCategory([FromBody] AddCategoryDto addCategoryDto)
