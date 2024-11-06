@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Application.Layer.InterfacesServices
 {
-    public interface IUserService
+    public interface IReservationService
     {
-        Task AddUser(AddUserDto addUserDto);
-        Task<ResponseLoginDto> Login(LoginDto loginDto);
-        string GenerateToken(string username, string rol,string idUser);
+        Task<IEnumerable<ReservationDto>> GetAllReservations();
+        Task AddReservation(AddReservationDto addReservationDto);
     }
 }

@@ -17,6 +17,7 @@ namespace Infrastructure.Layer.Models
         public string Description { get; set; }
         public DateTime DatePublication { get; set; }
         public DateTime DateCreation { get; set; }
+        public int CountAvailable { get; set; }
         public int IdAuthor { get; set; }
         public int IdCategory { get; set; }
 

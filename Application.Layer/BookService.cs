@@ -42,7 +42,8 @@ namespace Application.Layer
                 IdAuthor = addUserDto.IdAuthor,
                 IdCategory = addUserDto.IdCategory,
                 DateCreation = DateTime.Now,
-                DatePublication = addUserDto.DatePublication
+                DatePublication = addUserDto.DatePublication,
+                CountAvailable = addUserDto.CountAvailable,
 
             };
 

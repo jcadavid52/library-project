@@ -54,6 +54,9 @@ namespace Infrastructure.Layer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CountAvailable")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateCreation")
                         .HasColumnType("datetime2");
 
@@ -137,20 +140,30 @@ namespace Infrastructure.Layer.Migrations
                     b.Property<DateTime>("DateInitial")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdBook")
-                        .HasColumnType("int");
-
                     b.Property<string>("IdUser")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdBook");
-
                     b.HasIndex("IdUser");
 
                     b.ToTable("Reservations");
+                });
+
+            modelBuilder.Entity("Infrastructure.Layer.Models.ReservationBook", b =>
+                {
+                    b.Property<int>("IdBook")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdReservation")
+                        .HasColumnType("int");
+
+                    b.HasIndex("IdBook");
+
+                    b.HasIndex("IdReservation");
+
+                    b.ToTable("ReservationsBooks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -411,21 +424,32 @@ namespace Infrastructure.Layer.Migrations
 
             modelBuilder.Entity("Infrastructure.Layer.Models.Reservation", b =>
                 {
-                    b.HasOne("Infrastructure.Layer.Models.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("IdBook")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Infrastructure.Layer.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("IdUser")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Infrastructure.Layer.Models.ReservationBook", b =>
+                {
+                    b.HasOne("Infrastructure.Layer.Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("IdBook")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Infrastructure.Layer.Models.Reservation", "Reservation")
+                        .WithMany()
+                        .HasForeignKey("IdReservation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Book");
 
-                    b.Navigation("User");
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

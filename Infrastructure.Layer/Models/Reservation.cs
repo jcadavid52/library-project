@@ -15,11 +15,7 @@ namespace Infrastructure.Layer.Models
         public DateTime DateInitial { get; set; }
         public DateTime DateFinish { get; set; }
         public  DateTime DateCreate { get; set; }
-        public int IdBook { get; set; }
         public string IdUser { get; set; }
-
-        [ForeignKey("IdBook")]
-        public Book Book { get; set; }
 
         [ForeignKey("IdUser")]
         public User User { get; set; }

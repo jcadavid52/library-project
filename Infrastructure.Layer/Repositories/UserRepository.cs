@@ -54,6 +54,8 @@ namespace Infrastructure.Layer.Repositories
             await _userManager.AddToRoleAsync(user, "Administrador");
         }
 
+        
+
         public async Task<ResponseLogin> Login(string user, string password)
         {
             var userFind = await _libraryDbContext.Users.FirstOrDefaultAsync(
@@ -72,7 +74,8 @@ namespace Infrastructure.Layer.Repositories
                     {
                         UserName = userFind.UserName,
                         Rol = rols.FirstOrDefault(),
-                        Success = true
+                        Success = true,
+                        IdUser = userFind.Id,
 
                     };
                 }
@@ -82,6 +85,7 @@ namespace Infrastructure.Layer.Repositories
                     {
                         UserName = "",
                         Rol = "",
+                        IdUser = "",
                         Success = false
 
                     };
@@ -94,6 +98,7 @@ namespace Infrastructure.Layer.Repositories
                 {
                     UserName = "",
                     Rol = "",
+                    IdUser = "",
                     Success = false
 
                 };

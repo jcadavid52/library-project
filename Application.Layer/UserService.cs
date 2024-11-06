@@ -42,7 +42,7 @@ namespace Application.Layer
            await _userRepository.AddUser(user,addUserDto.Password);
         }
 
-        public string GenerateToken(string username, string rol)
+        public string GenerateToken(string username, string rol,string idUser)
         {
 
             //var manejadoToken = new JwtSecurityTokenHandler();
@@ -63,12 +63,14 @@ namespace Application.Layer
             //return manejadoToken.WriteToken(token);
 
             var claims = new[]
-        {
-            new Claim(JwtRegisteredClaimNames.Sub, username),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.Role, rol),
-            new Claim(ClaimTypes.Name, username.ToString())
-        };
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, username),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.Role, rol),
+                new Claim(ClaimTypes.Name, username.ToString()),
+                new Claim(ClaimTypes.UserData,idUser)
+
+            };
 
             // Configuración de la clave secreta y las credenciales de firma
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["ApiSettings:SecretKey"]));
@@ -93,7 +95,7 @@ namespace Application.Layer
 
             if (responseLogin.Success)
             {
-                var token = GenerateToken(responseLogin.UserName, responseLogin.Rol);
+                var token = GenerateToken(responseLogin.UserName, responseLogin.Rol,responseLogin.IdUser);
 
                 return new ResponseLoginDto
                 {

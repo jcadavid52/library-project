@@ -34,8 +34,14 @@ builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 
+builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+
+
+
 var key = builder.Configuration.GetValue<string>("ApiSettings:SecretKey");
 
+builder.Services.AddHttpContextAccessor();
 //autenticacion
 builder.Services.AddAuthentication(
      auth =>
@@ -64,6 +70,7 @@ builder.Services.AddAuthentication(
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();

@@ -177,5 +177,21 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApi.Controllers.ReservationController",
+    "Method": "RegisterReservation",
+    "RelativePath": "api/Reservation/RegisterReservation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addReservationDto",
+        "Type": "Application.Layer.DTOs.AddReservationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

@@ -11,5 +11,6 @@ namespace Infrastructure.Layer.Interfaces
     {
         Task<ResponseLogin> Login(string user,string password);
         Task AddUser(User user,string password);
+        //Task<string> GetIdUserContext();
     }
 }
