@@ -180,6 +180,32 @@
   },
   {
     "ContainingType": "LibraryWebApi.Controllers.ReservationController",
+    "Method": "GetAllReservations",
+    "RelativePath": "api/Reservation/GetAllReservations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApi.Controllers.ReservationController",
+    "Method": "GetAllReservationsByIdUser",
+    "RelativePath": "api/Reservation/GetAllReservationsByIdUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idUser",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApi.Controllers.ReservationController",
     "Method": "RegisterReservation",
     "RelativePath": "api/Reservation/RegisterReservation",
     "HttpMethod": "POST",

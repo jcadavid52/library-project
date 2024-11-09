@@ -17,14 +17,17 @@ namespace Infrastructure.Layer.Models
         public string Description { get; set; }
         public DateTime DatePublication { get; set; }
         public DateTime DateCreation { get; set; }
-        public int CountAvailable { get; set; }
+        public string CodeReference { get; set; }
         public int IdAuthor { get; set; }
         public int IdCategory { get; set; }
+        public int? ReservationId { get; set; }
 
         [ForeignKey("IdAuthor")]
         public Author Author { get; set; }
 
         [ForeignKey("IdCategory")]
         public Category Category { get; set; }
+
+      
     }
 }

@@ -10,6 +10,7 @@ namespace Application.Layer.InterfacesServices
     public interface IReservationService
     {
         Task<IEnumerable<ReservationDto>> GetAllReservations();
+        Task<IEnumerable<ReservationDto>> GetReservationsByIdUser(string idUser);
         Task AddReservation(AddReservationDto addReservationDto);
     }
 }

@@ -19,6 +19,10 @@ namespace Infrastructure.Layer.Models
 
         [ForeignKey("IdUser")]
         public User User { get; set; }
+        public IEnumerable<Book> books { get; set; }
+
+
+       
 
     }
 }

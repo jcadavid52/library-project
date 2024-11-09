@@ -19,7 +19,7 @@ namespace Application.Layer.DTOs
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
-        public int CountAvailable { get; set; }
+        public string CodeReference { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public int IdAuthor { get; set; }

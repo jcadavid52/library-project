@@ -12,7 +12,7 @@ namespace Application.Layer.DTOs
         public DateTime DateInitial { get; set; }
         public DateTime DateFinish { get; set; }
         public DateTime DateCreate { get; set; }
-        public BookDto Book { get; set; }
         public  UserDto User { get; set; }
+        public IEnumerable<BookDto> BookDtos { get; set; }
     }
 }

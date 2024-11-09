@@ -54,8 +54,9 @@ namespace Infrastructure.Layer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CountAvailable")
-                        .HasColumnType("int");
+                    b.Property<string>("CodeReference")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateCreation")
                         .HasColumnType("datetime2");
@@ -76,6 +77,9 @@ namespace Infrastructure.Layer.Migrations
                     b.Property<int>("PageNumber")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ReservationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -85,6 +89,8 @@ namespace Infrastructure.Layer.Migrations
                     b.HasIndex("IdAuthor");
 
                     b.HasIndex("IdCategory");
+
+                    b.HasIndex("ReservationId");
 
                     b.ToTable("Books");
                 });
@@ -149,21 +155,6 @@ namespace Infrastructure.Layer.Migrations
                     b.HasIndex("IdUser");
 
                     b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("Infrastructure.Layer.Models.ReservationBook", b =>
-                {
-                    b.Property<int>("IdBook")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdReservation")
-                        .HasColumnType("int");
-
-                    b.HasIndex("IdBook");
-
-                    b.HasIndex("IdReservation");
-
-                    b.ToTable("ReservationsBooks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -417,6 +408,10 @@ namespace Infrastructure.Layer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Infrastructure.Layer.Models.Reservation", null)
+                        .WithMany("books")
+                        .HasForeignKey("ReservationId");
+
                     b.Navigation("Author");
 
                     b.Navigation("Category");
@@ -431,25 +426,6 @@ namespace Infrastructure.Layer.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Infrastructure.Layer.Models.ReservationBook", b =>
-                {
-                    b.HasOne("Infrastructure.Layer.Models.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("IdBook")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Infrastructure.Layer.Models.Reservation", "Reservation")
-                        .WithMany()
-                        .HasForeignKey("IdReservation")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -512,6 +488,11 @@ namespace Infrastructure.Layer.Migrations
                         .IsRequired();
 
                     b.Navigation("EducativeInstitution");
+                });
+
+            modelBuilder.Entity("Infrastructure.Layer.Models.Reservation", b =>
+                {
+                    b.Navigation("books");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,9 +10,8 @@ namespace Application.Layer.DTOs
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public DateTime DateFinish { get; set; }
 
-        [Required(ErrorMessage = "Este campo es obligatorio")]
-        public int[] IdBooks { get; set; }
-
+        //[Required(ErrorMessage = "Este campo es obligatorio")]
+        public IEnumerable<int> IdBooks { get; set; }
 
     }
 }

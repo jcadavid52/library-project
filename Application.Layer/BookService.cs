@@ -27,11 +27,11 @@ namespace Application.Layer
                 throw new ValidationException("La página del libro no puede ser menor a 49 páginas según la UNESCO");
             }
 
-            var resultBook = await _bookRepository.GetBookByTitle(addUserDto.Title);
+            var resultBook = await _bookRepository.GetBookByCodeReference(addUserDto.CodeReference);
 
             if(resultBook != null)
             {
-                throw new InvalidOperationException($"El título '{addUserDto.Title}' ya existe");
+                throw new InvalidOperationException($"El código de referencia '{addUserDto.CodeReference}' ya existe");
             }
 
             var book = new Book
@@ -43,7 +43,8 @@ namespace Application.Layer
                 IdCategory = addUserDto.IdCategory,
                 DateCreation = DateTime.Now,
                 DatePublication = addUserDto.DatePublication,
-                CountAvailable = addUserDto.CountAvailable,
+                CodeReference = addUserDto.CodeReference,
+                ReservationId = null
 
             };
 
