@@ -5,36 +5,34 @@
 namespace Infrastructure.Layer.Migrations
 {
     /// <inheritdoc />
-    public partial class AddpropcodReferenceoftablebook : Migration
+    public partial class Addpropstablebookpath : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "CountAvailable",
-                table: "Books");
-
             migrationBuilder.AddColumn<string>(
-                name: "CodeReference",
+                name: "PathGlobalImage",
                 table: "Books",
                 type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "PathImage",
+                table: "Books",
+                type: "nvarchar(max)",
+                nullable: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "CodeReference",
+                name: "PathGlobalImage",
                 table: "Books");
 
-            migrationBuilder.AddColumn<int>(
-                name: "CountAvailable",
-                table: "Books",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.DropColumn(
+                name: "PathImage",
+                table: "Books");
         }
     }
 }

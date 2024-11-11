@@ -3,6 +3,8 @@ using Application.Layer.InterfacesServices;
 using Infrastructure.Layer.Interfaces;
 using Infrastructure.Layer.InterfacesRepositories;
 using Infrastructure.Layer.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,13 +17,17 @@ namespace Application.Layer
     public class BookService : IBookService
     {
         private readonly IBookRepository _bookRepository;
+        private readonly IConfiguration _config;
 
-        public BookService(IBookRepository bookRepository)
+        public BookService(IBookRepository bookRepository,IConfiguration config)
         {
             _bookRepository = bookRepository;
+            _config = config;
         }
-        public async Task AddBook(AddBookDto addUserDto)
+        public async Task AddBook(AddBookDto addUserDto, string pathGlobalImage)
         {
+            
+
             if (addUserDto.PageNumber < 49)
             {
                 throw new ValidationException("La página del libro no puede ser menor a 49 páginas según la UNESCO");
@@ -34,6 +40,10 @@ namespace Application.Layer
                 throw new InvalidOperationException($"El código de referencia '{addUserDto.CodeReference}' ya existe");
             }
 
+
+            var rootFile = UploadFile(addUserDto.FormFile);
+
+
             var book = new Book
             {
                 Title = addUserDto.Title,
@@ -44,7 +54,9 @@ namespace Application.Layer
                 DateCreation = DateTime.Now,
                 DatePublication = addUserDto.DatePublication,
                 CodeReference = addUserDto.CodeReference,
-                ReservationId = null
+                ReservationId = null,
+                PathImage = rootFile,
+                PathGlobalImage = pathGlobalImage + "/imagesBooks/" + addUserDto.FormFile.FileName + "_" + Guid.NewGuid(),
 
             };
 
@@ -192,6 +204,27 @@ namespace Application.Layer
             book.DatePublication = bookDto.DatePublication;
 
             await _bookRepository.UpdateBook();
+        }
+
+        public string UploadFile(IFormFile formFile)
+        {
+            var rootFile =  @_config["FileStorage:UploadPath"] + Guid.NewGuid() + formFile.FileName;
+            var directoryUbication = Path.Combine(Directory.GetCurrentDirectory(), rootFile);
+
+            FileInfo file = new FileInfo(directoryUbication);
+
+            if (file.Exists)
+            {
+                file.Delete();
+            }
+
+            using (var fileStream = new FileStream(directoryUbication, FileMode.Create))
+            {
+               formFile.CopyTo(fileStream);
+            }
+
+            return rootFile;
+
         }
     }
 }

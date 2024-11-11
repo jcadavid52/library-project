@@ -120,6 +120,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseCors("policyCors");
 app.UseMiddleware<ExceptionMiddleware>();

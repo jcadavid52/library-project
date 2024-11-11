@@ -21,6 +21,8 @@ namespace Infrastructure.Layer.Models
         public int IdAuthor { get; set; }
         public int IdCategory { get; set; }
         public int? ReservationId { get; set; }
+        public string? PathGlobalImage { get; set; }
+        public string? PathImage { get; set; }
 
         [ForeignKey("IdAuthor")]
         public Author Author { get; set; }

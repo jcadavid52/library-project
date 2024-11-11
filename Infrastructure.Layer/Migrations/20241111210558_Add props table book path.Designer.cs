@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Layer.Migrations
 {
     [DbContext(typeof(LibraryDBContext))]
-    [Migration("20241107155914_Add prop codReference of table book")]
-    partial class AddpropcodReferenceoftablebook
+    [Migration("20241111210558_Add props table book path")]
+    partial class Addpropstablebookpath
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,6 +79,12 @@ namespace Infrastructure.Layer.Migrations
 
                     b.Property<int>("PageNumber")
                         .HasColumnType("int");
+
+                    b.Property<string>("PathGlobalImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PathImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ReservationId")
                         .HasColumnType("int");

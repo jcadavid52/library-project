@@ -32,14 +32,17 @@ namespace LibraryWebApi.Controllers
         
         [HttpPost("AddBook")]
         [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> AddBook([FromBody] AddBookDto book)
+        public async Task<IActionResult> AddBook([FromForm] AddBookDto book)
         {
+            string pathGlobalImage = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.Value}{HttpContext.Request.PathBase.Value}";
+
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await _bookService.AddBook(book);
+            await _bookService.AddBook(book,pathGlobalImage);
 
             return Ok(new { message = "Registrado exitosamente", book = book });
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -29,7 +30,8 @@ namespace Application.Layer.DTOs
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public DateTime DatePublication { get; set; }
+        public IFormFile FormFile { get; set; }
 
-     
+
     }
 }

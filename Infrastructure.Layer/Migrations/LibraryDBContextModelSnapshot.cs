@@ -77,6 +77,12 @@ namespace Infrastructure.Layer.Migrations
                     b.Property<int>("PageNumber")
                         .HasColumnType("int");
 
+                    b.Property<string>("PathGlobalImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PathImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("ReservationId")
                         .HasColumnType("int");
 
