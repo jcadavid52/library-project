@@ -94,6 +94,7 @@ namespace Application.Layer
                     Description = book.Description,
                     DatePublication = book.DatePublication,
                     DateCreation = book.DateCreation,
+                    CodeReference = book.CodeReference,
                     Author = new AuthorDto
                     {
                         Id = book.Author.Id,
@@ -184,6 +185,47 @@ namespace Application.Layer
             };
 
             return bookDto;
+        }
+
+        public async Task<IEnumerable<BookDto>> GetBooksByCategory(int IdCategory)
+        {
+            var books = await _bookRepository.GetBooksByCategory(IdCategory);
+
+            if (books.Count() == 0)
+            {
+                throw new KeyNotFoundException($"No se encontraron categoría con el ID '{IdCategory}'");
+            }
+
+            var booksDto = new List<BookDto>();
+
+            foreach (var book in books)
+            {
+                var bookDto = new BookDto
+                {
+                    Id = book.Id,
+                    Title = book.Title,
+                    PageNumber = book.PageNumber,
+                    Description = book.Description,
+                    DatePublication = book.DatePublication,
+                    DateCreation = book.DateCreation,
+                    Author = new AuthorDto
+                    {
+                        Id = book.Author.Id,
+                        Name = book.Author.Name,
+                        Nationality = book.Author.Nationality,
+                        Birthdate = book.Author.Birthdate,
+                    },
+                    Genero = new GeneroDto
+                    {
+                        Id = book.Category.Id,
+                        Name = book.Category.Name,
+                    }
+                };
+
+                booksDto.Add(bookDto);
+            }
+
+                return booksDto;
         }
 
         public async Task UpdateBook(UpdateBookDto bookDto, int id)

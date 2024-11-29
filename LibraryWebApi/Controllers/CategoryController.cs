@@ -18,7 +18,7 @@ namespace LibraryWebApi.Controllers
         }
 
         [HttpGet("GetAllCategories")]
-        [Authorize(Roles = "Usuario,Administrador")]
+        //[Authorize(Roles = "Usuario,Administrador")]
         public async Task<IActionResult> GetAllCategories()
         {
             var categories = await _categoryService.GetAllCategories();

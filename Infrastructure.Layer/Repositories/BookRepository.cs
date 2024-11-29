@@ -50,6 +50,11 @@ namespace Infrastructure.Layer.Repositories
             return await _libraryDbContext.Books.Include("Author").Include("Category").FirstOrDefaultAsync(b => b.Title == title);
         }
 
+        public async Task<IEnumerable<Book>> GetBooksByCategory(int IdCategory)
+        {
+            return await _libraryDbContext.Books.Include("Author").Include("Category").Where(b => b.IdCategory == IdCategory).ToListAsync();
+        }
+
         public async Task SaveChanges()
         {
             await _libraryDbContext.SaveChangesAsync();

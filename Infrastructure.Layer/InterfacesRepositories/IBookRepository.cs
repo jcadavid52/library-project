@@ -16,6 +16,7 @@ namespace Infrastructure.Layer.InterfacesRepositories
         Task DeleteBook(Book book);
         Task<Book> GetBookByTitle(string title);
         Task<Book> GetBookByCodeReference(string codeReference);
+        Task<IEnumerable<Book>> GetBooksByCategory(int IdCategory);
         Task SaveChanges();
     }
 }

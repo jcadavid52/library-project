@@ -18,7 +18,7 @@ namespace LibraryWebApi.Controllers
         }
 
         [HttpGet("GetAllAuthors")]
-        [Authorize(Roles = "Usuario,Administrador")]
+        //[Authorize(Roles = "Usuario,Administrador")]
         public async Task<IActionResult> GetAllAuthors()
         {
             var authors = await _authorService.GetAllAuthors();

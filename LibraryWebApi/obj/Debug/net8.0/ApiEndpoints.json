@@ -168,6 +168,22 @@
   },
   {
     "ContainingType": "LibraryWebApi.Controllers.BookController",
+    "Method": "GetBooksByCategory",
+    "RelativePath": "api/Book/GetBooksByCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idCategory",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApi.Controllers.BookController",
     "Method": "UpdateBook",
     "RelativePath": "api/Book/UpdateBook",
     "HttpMethod": "PUT",

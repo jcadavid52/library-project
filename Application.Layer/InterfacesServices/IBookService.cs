@@ -1,4 +1,5 @@
 ﻿using Application.Layer.DTOs;
+
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Application.Layer.InterfacesServices
         Task<BookDto> GetBook(int id);
         Task<BookDto> GetBookByTitle(string title);
         Task<IEnumerable<BookDto>> GetAllBooks();
+        Task<IEnumerable<BookDto>> GetBooksByCategory(int IdCategory);
         string UploadFile(IFormFile formFile);
         
     }

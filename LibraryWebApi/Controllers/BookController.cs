@@ -21,7 +21,7 @@ namespace LibraryWebApi.Controllers
         }
         [HttpGet("GetAllBooks")]
 
-        [Authorize(Roles = "Usuario,Administrador")]
+        //[Authorize(Roles = "Usuario,Administrador")]
         public async Task<IActionResult> GetAllBooks()
         {
             var books = await _bookService.GetAllBooks();
@@ -109,6 +109,14 @@ namespace LibraryWebApi.Controllers
             await _bookService.UpdateBook(bookDto, id);
 
             return Ok(new {Message = "Modificado con éxito",BookUpdated = bookDto});
+        }
+
+        [HttpGet("GetBooksByCategory")]
+        public async Task<IActionResult> GetBooksByCategory(int idCategory)
+        {
+            var books = await _bookService.GetBooksByCategory(idCategory);
+
+            return Ok(new {books = books});
         }
 
     }
