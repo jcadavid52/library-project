@@ -62,7 +62,7 @@ namespace LibraryWebApi.Controllers
 
         [HttpGet("GetBook")]
 
-        [Authorize(Roles = "Usuario,Administrador")]
+        //[Authorize(Roles = "Usuario,Administrador")]
         public async Task<IActionResult> GetBook(int id)
         {
             var book = await _bookService.GetBook(id);
@@ -116,6 +116,10 @@ namespace LibraryWebApi.Controllers
         {
             var books = await _bookService.GetBooksByCategory(idCategory);
 
+            if(books.Count() == 0)
+            {
+                return Ok(new { message = $"No hay libros para la categoría {idCategory}" });
+            }
             return Ok(new {books = books});
         }
 

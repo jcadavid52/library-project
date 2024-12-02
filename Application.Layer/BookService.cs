@@ -157,7 +157,7 @@ namespace Application.Layer
         {
             var book = await _bookRepository.GetBookByTitle(title);
 
-            if(book == null)
+            if (book == null)
             {
                 throw new KeyNotFoundException($"No se encontró un libro con el título '{title}'");
             }
@@ -190,11 +190,6 @@ namespace Application.Layer
         public async Task<IEnumerable<BookDto>> GetBooksByCategory(int IdCategory)
         {
             var books = await _bookRepository.GetBooksByCategory(IdCategory);
-
-            if (books.Count() == 0)
-            {
-                throw new KeyNotFoundException($"No se encontraron categoría con el ID '{IdCategory}'");
-            }
 
             var booksDto = new List<BookDto>();
 

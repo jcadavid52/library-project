@@ -68,16 +68,39 @@ namespace Application.Layer
                 }
             }
 
+            var deliveryDate = CalculateDaysReservation();
+
             var reservation = new Reservation
             {
-                DateInitial = addReservationDto.DateInitial,
-                DateFinish = addReservationDto.DateFinish,
+                DateInitial =DateTime.Now.AddDays(1),
+                DateFinish = deliveryDate,
                 DateCreate = DateTime.Now,
                 IdUser = idUser,
                 
             };
             
             await _reservationRepository.RegisterReservation(reservation,addReservationDto.IdBooks);
+        }
+
+        public DateTime CalculateDaysReservation()
+        {
+            var dateNow = DateTime.Now;
+            int countDaysReservation = 7;
+            int countDays = 0;
+
+            while (countDays < countDaysReservation)
+            {
+                dateNow = dateNow.AddDays(1);
+
+                if(dateNow.DayOfWeek != DayOfWeek.Saturday && dateNow.DayOfWeek != DayOfWeek.Sunday)
+                {
+                    countDays++;
+                }
+            }
+
+            return dateNow;
+
+
         }
 
         public async Task<IEnumerable<ReservationDto>> GetAllReservations()

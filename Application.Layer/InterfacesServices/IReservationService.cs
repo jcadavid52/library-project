@@ -12,5 +12,6 @@ namespace Application.Layer.InterfacesServices
         Task<IEnumerable<ReservationDto>> GetAllReservations();
         Task<IEnumerable<ReservationDto>> GetReservationsByIdUser(string idUser);
         Task AddReservation(AddReservationDto addReservationDto);
+        DateTime CalculateDaysReservation();
     }
 }
